@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <app-auth-card title="Autentificare">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="form">
+        <p class="have-account">
+          Nu ai cont? Durează doar câteva secunde să-ți faci unul.
+          <a href="#">Inregistreaza-te</a>
+        </p>
+        <mat-form-field>
+          <input matInput type="text" placeholder="E-mail" formControlName="email">
+          <mat-error *ngIf="loginForm.get('email').getError('required')">E-mail-ul este obligatoriu!</mat-error>
+          <mat-error *ngIf="loginForm.get('email').getError('email')">Acesta nu este un e-mail valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Parola" formControlName="password">
+          <mat-error *ngIf="loginForm.get('password').getError('required')">Parola este obligatorie!</mat-error>
+        </mat-form-field>
+        <p>
+          <a href="#" class="forgot-password">Ti-ai uitat parola?</a>
+        </p>
+        <mat-checkbox formControlName="rememberAccount">
+          Tine-ma minte
+        </mat-checkbox>
+        <button mat-flat-button color="accent" [disabled]="loginForm.invalid">
+            Sign In
+        </button>
+      </form>
+    </app-auth-card>
+  </div>
+</div>
