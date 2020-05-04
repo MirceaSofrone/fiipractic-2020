@@ -1,10 +1,10 @@
 <div class="row justify-content-center">
   <div class="col-md-6">
     <app-auth-card title="Autentificare">
-      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="form">
-        <p class="have-account">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <p>
           Nu ai cont? Durează doar câteva secunde să-ți faci unul.
-          <a href="#">Inregistreaza-te</a>
+          <a href="#">Înregistrează-te</a>
         </p>
         <mat-form-field>
           <input matInput type="text" placeholder="E-mail" formControlName="email">
@@ -19,10 +19,10 @@
           <a href="#" class="forgot-password">Ti-ai uitat parola?</a>
         </p>
         <mat-checkbox formControlName="rememberAccount">
-          Tine-ma minte
+          Ține-mă minte
         </mat-checkbox>
         <button mat-flat-button color="accent" [disabled]="loginForm.invalid">
-            Sign In
+          Sign In
         </button>
       </form>
     </app-auth-card>

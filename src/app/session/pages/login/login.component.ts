@@ -1,5 +1,7 @@
+import { ILoginRequestPayload } from './../../models/auth.models';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SessionService } from './../../services/session/session.service';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +12,21 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor() { }
+  public payload: ILoginRequestPayload = {} as any;
+
+  constructor(private loginService: SessionService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       rememberAccount: new FormControl(false)
     });
+
+
   }
 
   onSubmit() {
-     console.log(this.loginForm.value);
+    this.loginService.login(this.loginForm.value);
   }
 }
