@@ -12,8 +12,6 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  public payload: ILoginRequestPayload = {} as any;
-
   constructor(private loginService: SessionService) { }
 
   ngOnInit(): void {
@@ -22,8 +20,6 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       rememberAccount: new FormControl(false)
     });
-
-
   }
 
   onSubmit() {
